@@ -11,9 +11,13 @@ We aim to help farmers to go beyond financial burden by CONNECTING URBAN TO RURA
 Problems we aim to tackle:
 
 1. Loans
+
 2.Dept Trap
+
 3.Lack of resources 
+
 4.Low quality production due to financial limitations
+
 5.A big hit to the farmer if the crop fails.
 
 SOLUTION:
