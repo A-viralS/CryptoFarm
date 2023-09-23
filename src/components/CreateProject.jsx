@@ -7,6 +7,7 @@ import { useGlobalState, setGlobalState } from '../store'
 const CreateProject = () => {
   const [createModal] = useGlobalState('createModal')
   const [title, setTitle] = useState('')
+  const [size, setSize] = useState('')
   const [description, setDescription] = useState('')
   const [cost, setCost] = useState('')
   const [date, setDate] = useState('')
@@ -19,10 +20,11 @@ const CreateProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!title || !description || !cost || !date || !imageURL) return
+    if (!title || !description || !cost || !date || !imageURL || !size) return
 
     const params = {
       title,
+      size,
       description,
       cost,
       expiresAt: toTimestamp(date),
@@ -59,7 +61,7 @@ const CreateProject = () => {
       >
         <form onSubmit={handleSubmit} className="flex flex-col">
           <div className="flex justify-between items-center">
-            <p className="font-semibold">Add Project</p>
+            <p className="font-semibold">Investment Required</p>
             <button
               onClick={onClose}
               type="button"
@@ -92,9 +94,26 @@ const CreateProject = () => {
             focus:ring-0"
               type="text"
               name="title"
-              placeholder="Title"
+              placeholder="Location of Your Land"
               onChange={(e) => setTitle(e.target.value)}
               value={title}
+              required
+            />
+          </div>
+
+          <div
+            className="flex justify-between items-center
+          bg-gray-300 rounded-xl mt-5"
+          >
+            <input
+              className="block w-full bg-transparent
+            border-0 text-sm text-slate-500 focus:outline-none
+            focus:ring-0"
+              type="text"
+              name="size"
+              placeholder="Size of Your Land"
+              onChange={(e) => setSize(e.target.value)}
+              value={size}
               required
             />
           </div>
@@ -111,7 +130,7 @@ const CreateProject = () => {
               step={0.01}
               min={0.01}
               name="cost"
-              placeholder="cost (ETH)"
+              placeholder="Total investment required (ETH)"
               onChange={(e) => setCost(e.target.value)}
               value={cost}
               required
@@ -128,7 +147,7 @@ const CreateProject = () => {
             focus:ring-0"
               type="date"
               name="date"
-              placeholder="Expires"
+              placeholder="Start date of Cultivation"
               onChange={(e) => setDate(e.target.value)}
               value={date}
               required
@@ -145,7 +164,7 @@ const CreateProject = () => {
             focus:ring-0"
               type="url"
               name="imageURL"
-              placeholder="Image URL"
+              placeholder="Image URL of Your Land"
               onChange={(e) => setImageURL(e.target.value)}
               value={imageURL}
               required
