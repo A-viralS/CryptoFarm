@@ -1,43 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/aviral/blockchain/genesis-main/src/contracts/Genesis.sol": {
-      "lastModificationDate": 1695136075648,
-      "contentHash": "2587f6684030149e06139f9f6477f4c2",
-      "sourceName": "src/contracts/Genesis.sol",
-      "solcConfig": {
-        "version": "0.8.11",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.7"
-      ],
-      "artifacts": [
-        "Genesis"
-      ]
-    },
-    "/home/aviral/blockchain/CryptoFarm/src/contracts/Genesis.sol": {
-      "lastModificationDate": 1695463199758,
+    "/Users/abhishekpadiyar/Documents/mernstack/CryptoFarm/CryptoFarm/src/contracts/Genesis.sol": {
+      "lastModificationDate": 1695469537526,
       "contentHash": "39419fc4a6f8dc7b16adbac74b85f14c",
       "sourceName": "src/contracts/Genesis.sol",
       "solcConfig": {

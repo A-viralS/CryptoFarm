@@ -21,7 +21,8 @@ const CreateProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!title || !description || !cost || !date || !imageURL || !size || !crop) return
+    if (!title || !description || !cost || !date || !imageURL || !size || !crop)
+      return
 
     const params = {
       title,
@@ -58,23 +59,17 @@ const CreateProject = () => {
     transform transition-transform duration-300 ${createModal}`}
     >
       <div
-        className="bg-white shadow-xl shadow-black
-        rounded-xl w-11/12 md:w-2/5 h-7/12 p-6"
+        className="bg-white shadow-xl  shadow-black rounded-xl w-11/12 md:w-2/5 max-h-[40rem] overflow-auto p-6"
       >
         <form onSubmit={handleSubmit} className="flex flex-col">
-          <div className="flex justify-between items-center">
-            <p className="font-semibold">Investment Required</p>
-            <button
-              onClick={onClose}
-              type="button"
-              className="border-0 bg-transparent focus:outline-none"
-            >
-              <FaTimes />
-            </button>
+          <div className='flex justify-between h-[4rem]'>
+          <div className="mt-7">
+            <p className="font-semibold text-3xl">Investment Required</p>
+            
           </div>
 
-          <div className="flex justify-center items-center mt-5">
-            <div className="rounded-xl overflow-hidden h-20 w-20">
+          <div className="flex">
+            <div className="rounded-xl ml-[4rem] overflow-hidden h-10000 w-20">
               <img
                 src={
                   imageURL ||
@@ -85,8 +80,16 @@ const CreateProject = () => {
               />
             </div>
           </div>
-
-          <div
+          <button
+              onClick={onClose}
+              type="button"
+              className="border-0 mb-[7rem]  bg-transparent focus:outline-none"
+            >
+              <FaTimes />
+            </button>
+          </div>
+           <hr className='bg-green-600 border-2 mt-[2rem] border-green-600 mb-[2rem]'/>
+          {/* <div
             className="flex justify-between items-center
           bg-gray-300 rounded-xl mt-5"
           >
@@ -101,9 +104,26 @@ const CreateProject = () => {
               value={title}
               required
             />
+          </div> */}
+          <div class="relative mb-5">
+            <input
+              type="text"
+              id="floating_outlined"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              required
+              class="block px-2.5  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none d focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+            />
+            <label
+              for="floating_outlined"
+              class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            >
+              Location of Your Land
+            </label>
           </div>
 
-          <div
+          {/* <div
             className="flex justify-between items-center
           bg-gray-300 rounded-xl mt-5"
           >
@@ -118,9 +138,26 @@ const CreateProject = () => {
               value={size}
               required
             />
+          </div> */}
+          <div class="relative mb-5">
+            <input
+              type="text"
+              id="floating_outlined"
+              onChange={(e) => setSize(e.target.value)}
+              value={size}
+              required
+              class="block px-2.5  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none d focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+            />
+            <label
+              for="floating_outlined"
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            >
+              Size(in Acres) of Land
+            </label>
           </div>
 
-          <div
+          {/* <div
             className="flex justify-between items-center
           bg-gray-300 rounded-xl mt-5"
           >
@@ -135,10 +172,28 @@ const CreateProject = () => {
               value={crop}
               required
             />
+          </div> */}
+
+          <div class="relative mb-5">
+            <input
+              type="text"
+              id="floating_outlined"
+              name="crop"
+              onChange={(e) => setCrop(e.target.value)}
+              value={crop}
+              required
+              class="block px-2.5  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none d focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+            />
+            <label
+              for="floating_outlined"
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            >
+              Type Of Crop
+            </label>
           </div>
 
-
-          <div
+          {/* <div
             className="flex justify-between items-center
           bg-gray-300 rounded-xl mt-5"
           >
@@ -155,9 +210,30 @@ const CreateProject = () => {
               value={cost}
               required
             />
+          </div> */}
+           <div class="relative mb-5">
+            <input
+              type="number"
+              step={0.01}
+              min={0.01}
+              id="floating_outlined"
+              name="cost"
+              onChange={(e) => setCost(e.target.value)}
+              value={cost}
+              required
+              class="block px-2.5  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none d focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+            />
+            <label
+              for="floating_outlined"
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            >
+             Total investment required (ETH)
+            </label>
           </div>
 
-          <div
+
+          {/* <div
             className="flex justify-between items-center
           bg-gray-300 rounded-xl mt-5"
           >
@@ -172,9 +248,27 @@ const CreateProject = () => {
               value={date}
               required
             />
+          </div> */}
+          <div class="relative mb-5">
+            <input
+              type="date"
+              id="floating_outlined"
+              name="date"
+              onChange={(e) => setDate(e.target.value)}
+              value={date}
+              required
+              class="block px-2.5  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none d focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+            />
+            <label
+              for="floating_outlined"
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            >
+             Start Date Of Cultivation
+            </label>
           </div>
 
-          <div
+          {/* <div
             className="flex justify-between items-center
           bg-gray-300 rounded-xl mt-5"
           >
@@ -189,9 +283,28 @@ const CreateProject = () => {
               value={imageURL}
               required
             />
+          </div> */}
+
+<div class="relative mb-5">
+            <input
+              type="url"
+              id="floating_outlined"
+              name="imageURL"
+              onChange={(e) => setImageURL(e.target.value)}
+              value={imageURL}
+              required
+              class="block px-2.5  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none d focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
+            />
+            <label
+              for="floating_outlined"
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            >
+               Image URL of Your Land
+            </label>
           </div>
 
-          <div
+          {/* <div
             className="flex justify-between items-center
           bg-gray-300 rounded-xl mt-5"
           >
@@ -206,6 +319,24 @@ const CreateProject = () => {
               value={description}
               required
             ></textarea>
+          </div> */}
+
+<div class="relative mb-5">
+            <textarea
+              type="url"
+              id="floating_outlined"
+              name="description"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+              required
+              class="block px-2.5  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none d focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""></textarea>
+            <label
+              for="floating_outlined"
+              class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            >
+                 Description
+            </label>
           </div>
 
           <button
