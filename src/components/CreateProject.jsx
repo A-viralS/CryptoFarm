@@ -8,6 +8,7 @@ const CreateProject = () => {
   const [createModal] = useGlobalState('createModal')
   const [title, setTitle] = useState('')
   const [size, setSize] = useState('')
+  const [crop, setCrop] = useState('')
   const [description, setDescription] = useState('')
   const [cost, setCost] = useState('')
   const [date, setDate] = useState('')
@@ -20,11 +21,12 @@ const CreateProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!title || !description || !cost || !date || !imageURL || !size) return
+    if (!title || !description || !cost || !date || !imageURL || !size || !crop) return
 
     const params = {
       title,
       size,
+      crop,
       description,
       cost,
       expiresAt: toTimestamp(date),
@@ -126,6 +128,24 @@ const CreateProject = () => {
               className="block w-full bg-transparent
             border-0 text-sm text-slate-500 focus:outline-none
             focus:ring-0"
+              type="text"
+              name="crop"
+              placeholder="Type of Crop"
+              onChange={(e) => setCrop(e.target.value)}
+              value={crop}
+              required
+            />
+          </div>
+
+
+          <div
+            className="flex justify-between items-center
+          bg-gray-300 rounded-xl mt-5"
+          >
+            <input
+              className="block w-full bg-transparent
+            border-0 text-sm text-slate-500 focus:outline-none
+            focus:ring-0"
               type="number"
               step={0.01}
               min={0.01}
@@ -194,7 +214,7 @@ const CreateProject = () => {
             text-white font-medium text-md leading-tight
             rounded-full shadow-md hover:bg-green-700 mt-5"
           >
-            Submit Project
+            Add Requirement
           </button>
         </form>
       </div>
