@@ -1,7 +1,10 @@
 # CryptoFarm
 Problem Statement Title - Student Innovation
+
 Problem Statement ID - 1484
+
 Description:
+
 More than 30% of the farmers in India are below poverty line and rest face financial difficulty even for basic facilities like education or healthcare. Unfortunately we come across suicide cases of farmers very often. The poor farmer invests large amount of his savings to his crop all at once and if the crop fails, he is completely devastated. Sometimes he takes informal loans at high interest rate which leads him to dept trap or pledging of his property.  
 We aim to help farmers to go beyond financial burden by CONNECTING URBAN TO RURAL economics through BLOCKCHAIN. 
 
