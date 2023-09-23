@@ -21,6 +21,16 @@ contract Genesis {
         PAIDOUT
     }
 
+    struct productStruct {
+       
+        string name;
+        uint price;
+        
+    }
+
+    productStruct[] public products;
+
+
     struct statsStruct {
         uint totalProjects;
         uint totalBacking;
@@ -63,6 +73,55 @@ contract Genesis {
     constructor(uint _projectTax) {
         owner = msg.sender;
         projectTax = _projectTax;
+    }
+  modifier projectOwner(uint id) {
+        require(msg.sender == projects[id].owner, "Only the project owner can perform this action");
+        _;
+    }
+     modifier productExists(uint productId) {
+        require(productId < products.length, "Product does not exist");
+        _;
+    }
+ function createProduct(string memory name, uint price) public ownerOnly {
+        require(bytes(name).length > 0, "Product name cannot be empty");
+        require(price > 0, "Product price must be greater than zero");
+
+        productStruct memory product;
+        product.name = name;
+        product.price = price;
+
+        products.push(product);
+
+        emit Action (
+            projectCount++,
+            "PRODUCT CREATED",
+            msg.sender,
+            block.timestamp
+        );
+    }
+
+   function getProduct(uint id) public view returns (string memory, uint) {
+        require(id < products.length, "Product not found");
+        productStruct memory product = products[id];
+        return (product.name, product.price);
+    }
+
+        
+   function buyProduct(uint productId) public payable {
+        require(productId < products.length, "Product not found");
+        productStruct storage product = products[productId];
+        require(msg.value >= product.price, "Insufficient funds to buy the product");
+
+        // Transfer the product price to the owner
+        payable(owner).transfer(product.price);
+
+        // Emit an event to track the purchase
+        emit Action (
+            productId,
+            "PRODUCT PURCHASED",
+            msg.sender,
+            block.timestamp
+        );
     }
 
     function createProject(

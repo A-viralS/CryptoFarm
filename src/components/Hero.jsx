@@ -1,7 +1,13 @@
-import { setGlobalState, useGlobalState } from '../store'
-const Hero = () => {
-  const [stats] = useGlobalState('stats')
+import { useNavigate } from "react-router-dom";
+import { setGlobalState, useGlobalState } from "../store";
+import React from "react";
 
+const Hero = () => {
+  const [stats] = useGlobalState("stats");
+  const navigate = useNavigate();
+  const navigateToShopPage = () => {
+    navigate("/shop"); // Replace '/shop' with the actual URL of your shop page
+  };
   return (
     <div className="text-center bg-white text-gray-800 py-24 px-6">
       <h1
@@ -18,7 +24,7 @@ const Hero = () => {
           className="inline-block px-6 py-2.5 bg-green-600
         text-white font-medium text-xs leading-tight uppercase
         rounded-full shadow-md hover:bg-green-700"
-          onClick={() => setGlobalState('createModal', 'scale-100')}
+          onClick={() => setGlobalState("createModal", "scale-100")}
         >
           Add Project
         </button>
@@ -32,12 +38,12 @@ const Hero = () => {
         >
           Back Projects
         </button>
-         <button
+        <button
           type="button"
           className="inline-block px-6 py-2.5 bg-green-600
-        text-white font-medium text-xs leading-tight uppercase
-        rounded-full shadow-md hover:bg-green-700"
-          onClick={() => setGlobalState('createModal', 'scale-100')}
+    text-white font-medium text-xs leading-tight uppercase
+    rounded-full shadow-md hover:bg-green-700"
+          onClick={navigateToShopPage}
         >
           Shop Products
         </button>
@@ -82,7 +88,7 @@ const Hero = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

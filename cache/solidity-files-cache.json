@@ -35,6 +35,41 @@
       "artifacts": [
         "Genesis"
       ]
+    },
+    "/home/aviral/blockchain/CryptoFarm/src/contracts/Genesis.sol": {
+      "lastModificationDate": 1695440803648,
+      "contentHash": "64f8dcfa2cb181ab93ce1743aab456be",
+      "sourceName": "src/contracts/Genesis.sol",
+      "solcConfig": {
+        "version": "0.8.11",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.7"
+      ],
+      "artifacts": [
+        "Genesis"
+      ]
     }
   }
 }

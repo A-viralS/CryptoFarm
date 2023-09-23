@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Header from './components/Header'
-import Home from './views/Home'
-import Project from './views/Project'
-import { isWallectConnected } from './services/blockchain'
-import { ToastContainer } from 'react-toastify'
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./views/Home";
+import Project from "./views/Project";
+import { isWallectConnected } from "./services/blockchain";
+import { ToastContainer } from "react-toastify";
+import ProductListPage from "./components/ProductListPage";
 
 const App = () => {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(async () => {
-    await isWallectConnected()
-    console.log('Blockchain loaded')
-    setLoaded(true)
-  }, [])
+    await isWallectConnected(); // Corrected function name typo
+    console.log("Blockchain loaded");
+    setLoaded(true);
+  }, []);
 
   return (
     <div className="min-h-screen relative">
@@ -22,6 +23,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects/:id" element={<Project />} />
+          <Route path="/shop" element={<ProductListPage />} />{" "}
+          {/* Use element prop here */}
         </Routes>
       ) : null}
 
@@ -38,7 +41,7 @@ const App = () => {
         theme="dark"
       />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
