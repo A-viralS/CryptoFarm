@@ -21,14 +21,14 @@ const ProductListPage = () => {
   };
 
   return (
-    <div>
+    <div className="Products lg:text-xl my-24 p-3 ">
       <h2>Available Products</h2>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
             <span>{product.name}</span>
             <span>Price: {product.price} ETH</span>
-            <button onClick={() => handlePurchase(product.id)}>Buy</button>
+            <button onClick={() => handlePurchase(product.id)} className="bg-transparent hover:bg-green-500 text-green-700 font-semibold ml-3 mt-2 hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Buy</button>
           </li>
         ))}
       </ul>
