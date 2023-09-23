@@ -21,12 +21,12 @@ contract Genesis {
         PAIDOUT
     }
 
-    struct productStruct {
-       
-        string name;
-        uint price;
-        
-    }
+   struct productStruct {
+    uint productId; // Unique identifier for the product
+    string name;
+    uint price;
+}
+
 
     productStruct[] public products;
 
@@ -73,6 +73,10 @@ contract Genesis {
     constructor(uint _projectTax) {
         owner = msg.sender;
         projectTax = _projectTax;
+      products.push(productStruct(0, "Product 1", 1e18));
+products.push(productStruct(1, "Product 2", 1e18));
+products.push(productStruct(2, "Product 3", 1e18));
+
     }
   modifier projectOwner(uint id) {
         require(msg.sender == projects[id].owner, "Only the project owner can perform this action");
@@ -82,47 +86,34 @@ contract Genesis {
         require(productId < products.length, "Product does not exist");
         _;
     }
- function createProduct(string memory name, uint price) public ownerOnly {
-        require(bytes(name).length > 0, "Product name cannot be empty");
-        require(price > 0, "Product price must be greater than zero");
 
-        productStruct memory product;
-        product.name = name;
-        product.price = price;
 
-        products.push(product);
-
-        emit Action (
-            projectCount++,
-            "PRODUCT CREATED",
-            msg.sender,
-            block.timestamp
-        );
-    }
 
    function getProduct(uint id) public view returns (string memory, uint) {
-        require(id < products.length, "Product not found");
+        
         productStruct memory product = products[id];
         return (product.name, product.price);
     }
 
-        
-   function buyProduct(uint productId) public payable {
-        require(productId < products.length, "Product not found");
-        productStruct storage product = products[productId];
-        require(msg.value >= product.price, "Insufficient funds to buy the product");
+ function buyProduct(uint productId) public payable {
+    
+    productStruct storage product = products[productId];
+    require(msg.value >= product.price, "Insufficient funds to buy the product!!!");
 
-        // Transfer the product price to the owner
-        payable(owner).transfer(product.price);
+    // Transfer the product price to the person making the purchase (msg.sender)
+    payable(msg.sender).transfer(product.price);
 
-        // Emit an event to track the purchase
-        emit Action (
-            productId,
-            "PRODUCT PURCHASED",
-            msg.sender,
-            block.timestamp
-        );
-    }
+    // Emit an event to track the purchase
+    emit Action (
+        productId,
+        "PRODUCT PURCHASED",
+        msg.sender,
+        block.timestamp
+    );
+}
+
+
+
 
     function createProject(
         string memory title,

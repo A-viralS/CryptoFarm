@@ -3,12 +3,12 @@
     {
       "id": 0,
       "name": "Product 1",
-      "price": 0.1
+      "price": 1
     },
     {
       "id": 1,
       "name": "Product 2",
-      "price": 0.2
+      "price": 2
     }
   ]
 }

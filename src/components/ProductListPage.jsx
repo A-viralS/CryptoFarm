@@ -12,11 +12,18 @@ const ProductListPage = () => {
   console.log("Products:", products); // Log the products data
   const handlePurchase = async (productId) => {
     try {
+      // Check if MetaMask is installed and connected
+      if (!ethereum || !ethereum.request) {
+        throw new Error("Please install and connect MetaMask");
+      }
+
+      // Call the buyProduct function if MetaMask is available
       await buyProduct(productId);
-      // You can implement further logic here, such as updating the UI after a successful purchase.
+      console.log("Buying product with ID:", productId);
       console.log("Product purchased successfully.");
     } catch (error) {
-      console.error("Error purchasing product:", error);
+      console.error("Error purchasing product:", error.message);
+      // You can display an error message to the user here
     }
   };
 
@@ -28,7 +35,12 @@ const ProductListPage = () => {
           <li key={product.id}>
             <span>{product.name}</span>
             <span>Price: {product.price} ETH</span>
-            <button onClick={() => handlePurchase(product.id)} className="bg-transparent hover:bg-green-500 text-green-700 font-semibold ml-3 mt-2 hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Buy</button>
+            <button
+              onClick={() => handlePurchase(product.id)}
+              className="bg-transparent hover:bg-green-500 text-green-700 font-semibold ml-3 mt-2 hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
+            >
+              Buy
+            </button>
           </li>
         ))}
       </ul>

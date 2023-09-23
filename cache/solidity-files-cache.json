@@ -37,8 +37,8 @@
       ]
     },
     "/home/aviral/blockchain/CryptoFarm/src/contracts/Genesis.sol": {
-      "lastModificationDate": 1695440803648,
-      "contentHash": "64f8dcfa2cb181ab93ce1743aab456be",
+      "lastModificationDate": 1695463199758,
+      "contentHash": "39419fc4a6f8dc7b16adbac74b85f14c",
       "sourceName": "src/contracts/Genesis.sol",
       "solcConfig": {
         "version": "0.8.11",

@@ -57,30 +57,34 @@ const getEtheriumContract = async () => {
     return getGlobalState("contract");
   }
 };
-
-const handleCreateProduct = async (productName, productPrice) => {
-  // Call the createProduct function with the product name and price
-  await createProduct(productName, productPrice);
-  // Add any additional logic you need after creating a product
-};
-
-const handleGetProduct = async (productId) => {
-  try {
-    // Call the getProduct function with productId to fetch a product name and price
-    const [productName, productPrice] = await getProduct(productId);
-    // Use the productName and productPrice as needed in your application
-    console.log(`Product Name: ${productName}, Price: ${productPrice}`);
-  } catch (error) {
-    reportError(error);
-  }
-};
-
 const buyProduct = async (productId) => {
   try {
     if (!ethereum) return alert("Please install Metamask");
 
-    const contract = await getEtheriumContract();
-    await contract.buyProduct(productId);
+    const contractAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"; // Replace with your contract address
+
+    // Specify the gas limit for the transaction
+    const gasLimit = 50000; // Adjust this value as needed
+
+    // Construct the transaction object
+    const tx = {
+      to: 0x5fc8d32690cc91d4c39d9d3abcbd16989f875707, // Replace with the contract address
+      value: ethers.utils.parseEther("1"), // Assuming you're sending 1 ether
+      gasLimit, // Set your desired gas limit here
+    };
+
+    // Send the transaction
+    const response = await ethereum.request({
+      method: "eth_sendTransaction",
+      params: [tx],
+    });
+
+    console.log("Transaction sent:", response);
+
+    // You can also wait for the transaction to be mined if needed
+    await provider.waitForTransaction(response);
+
+    console.log("Buying product with ID:", productId);
   } catch (error) {
     reportError(error);
   }
@@ -282,7 +286,5 @@ export {
   backProject,
   getBackers,
   payoutProject,
-  handleCreateProduct,
-  handleGetProduct,
   buyProduct,
 };
