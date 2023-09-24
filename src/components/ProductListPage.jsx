@@ -10,16 +10,20 @@ const ProductListPage = () => {
     setProducts(data.products);
   }, []);
   console.log("Products:", products); // Log the products data
+
   const handlePurchase = async (productId) => {
     try {
       // Check if MetaMask is installed and connected
       if (!ethereum || !ethereum.request) {
         throw new Error("Please install and connect MetaMask");
       }
-
+      console.log(
+        "Entering the handlepurchase in list page# Buying product with ID:",
+        productId
+      );
       // Call the buyProduct function if MetaMask is available
       await buyProduct(productId);
-      console.log("Buying product with ID:", productId);
+
       console.log("Product purchased successfully.");
     } catch (error) {
       console.error("Error purchasing product:", error.message);

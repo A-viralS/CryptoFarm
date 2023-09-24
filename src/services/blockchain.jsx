@@ -3,6 +3,8 @@ import address from "../abis/contractAddress.json";
 import { getGlobalState, setGlobalState } from "../store";
 import { ethers } from "ethers";
 import addresss from "../abis/contractAddress.json";
+const Web3 = require("web3"); // If you're using Node.js
+const web3 = new Web3(window.ethereum); // For MetaMask
 const { ethereum } = window;
 const contractAddress = address.address;
 const contractAbi = abi.abi;
@@ -59,14 +61,23 @@ const getEtheriumContract = async () => {
   }
 };
 const buyProduct = async (productId) => {
+  console.log("Entering the buyProduct in blockchain service");
+  console.log(productId);
   try {
+    console.log("inside try block of buyProduct");
     if (!ethereum) return alert("Please install Metamask");
     const connectedAccount = getGlobalState("connectedAccount");
+    const buyerAddress = connectedAccount;
     const contract = await getEtheriumContract();
+    console.log("after getethecontract");
+    const tx = await // Assuming productId is 0 and productPrice is 1 ether
 
-    const tx = await contract.buyProduct(productId, {
-      from: connectedAccount,
+    await contract.buyProduct(0, web3.utils.toWei("1", "ether"), {
+      from: buyerAddress,
+      value: web3.utils.toWei("1", "ether"),
     });
+
+    console.log("after conract.buyproduct");
 
     await tx.wait();
   } catch (error) {

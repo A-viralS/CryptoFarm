@@ -74,7 +74,7 @@ contract Genesis {
         owner = msg.sender;
         projectTax = _projectTax;
       products.push(productStruct(0, "Product 1", 1 ether));
-products.push(productStruct(1, "Product 2", 1 ether ));
+products.push(productStruct(1, "Product 2", 1 ether));
 products.push(productStruct(2, "Product 3", 1 ether ));
 
     }
@@ -94,15 +94,12 @@ products.push(productStruct(2, "Product 3", 1 ether ));
         productStruct memory product = products[id];
         return (product.name, product.price);
     }
-function buyProduct(uint productId) public payable {
-
-    require(projectExist[productId], "Product does not exist");
-
-    productStruct storage product = products[productId];
-    require(msg.value >= product.price, "Insufficient funds to buy the product!!!");
+function buyProduct(uint productId, uint productPrice) public payable productExists(productId) {
+    
+    require(msg.value >= productPrice, "Insufficient funds to buy the product!!!");
 
     // Transfer the product price to the project owner (contract owner)
-    payable(owner).transfer(msg.value); // Access the owner directly
+    payable(owner).transfer(productPrice);
 
     // Emit an event to track the purchase
     emit Action (
@@ -112,6 +109,8 @@ function buyProduct(uint productId) public payable {
         block.timestamp
     );
 }
+
+
 
 
 
