@@ -68,7 +68,7 @@ const buyProduct = async (productId) => {
 
     // Construct the transaction object
     const tx = {
-      to: 0x5fc8d32690cc91d4c39d9d3abcbd16989f875707, // Replace with the contract address
+      to: " 0x0165878a594ca255338adfa4d48449f69242eb8f", // Replace with the contract address
       value: ethers.utils.parseEther("1"), // Assuming you're sending 1 ether
       gasLimit, // Set your desired gas limit here
     };
