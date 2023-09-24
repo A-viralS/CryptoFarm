@@ -2,11 +2,12 @@ import abi from "../abis/src/contracts/Genesis.sol/Genesis.json";
 import address from "../abis/contractAddress.json";
 import { getGlobalState, setGlobalState } from "../store";
 import { ethers } from "ethers";
-
+import addresss from "../abis/contractAddress.json";
 const { ethereum } = window;
 const contractAddress = address.address;
 const contractAbi = abi.abi;
 let tx;
+const addressvalue = addresss.address;
 
 const connectWallet = async () => {
   try {
@@ -46,7 +47,7 @@ const isWallectConnected = async () => {
 
 const getEtheriumContract = async () => {
   const connectedAccount = getGlobalState("connectedAccount");
-
+  console.log(contractAddress);
   if (connectedAccount) {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
@@ -60,31 +61,14 @@ const getEtheriumContract = async () => {
 const buyProduct = async (productId) => {
   try {
     if (!ethereum) return alert("Please install Metamask");
+    const connectedAccount = getGlobalState("connectedAccount");
+    const contract = await getEtheriumContract();
 
-    const contractAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"; // Replace with your contract address
-
-    // Specify the gas limit for the transaction
-    const gasLimit = 50000; // Adjust this value as needed
-
-    // Construct the transaction object
-    const tx = {
-      to: " 0x0165878a594ca255338adfa4d48449f69242eb8f", // Replace with the contract address
-      value: ethers.utils.parseEther("1"), // Assuming you're sending 1 ether
-      gasLimit, // Set your desired gas limit here
-    };
-
-    // Send the transaction
-    const response = await ethereum.request({
-      method: "eth_sendTransaction",
-      params: [tx],
+    const tx = await contract.buyProduct(productId, {
+      from: connectedAccount,
     });
 
-    console.log("Transaction sent:", response);
-
-    // You can also wait for the transaction to be mined if needed
-    await provider.waitForTransaction(response);
-
-    console.log("Buying product with ID:", productId);
+    await tx.wait();
   } catch (error) {
     reportError(error);
   }
