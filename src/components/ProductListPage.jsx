@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { buyProduct } from "../services/blockchain";
 import data from "./data.json"; // Import the JSON data directly
+import Cards from "./ShopCards";
 
 const ProductListPage = () => {
   const [products, setProducts] = useState([]);
@@ -9,7 +10,7 @@ const ProductListPage = () => {
     // Use the imported JSON data directly
     setProducts(data.products);
   }, []);
-  console.log("Products:", products); // Log the products data
+  // console.log("Products:", products); // Log the products data
 
   const handlePurchase = async (productId) => {
     try {
@@ -32,9 +33,9 @@ const ProductListPage = () => {
   };
 
   return (
-    <div className="Products lg:text-xl my-24 p-3 ">
-      <h2>Available Products</h2>
-      <ul>
+    <div className=" overflow-hidden">
+      <h2 className="text-2xl my-5 text-center  ">Your Shopping Cart</h2>
+      {/* <ul>
         {products.map((product) => (
           <li key={product.id}>
             <span>{product.name}</span>
@@ -45,9 +46,30 @@ const ProductListPage = () => {
             >
               Buy
             </button>
-          </li>
-        ))}
-      </ul>
+            {/* <Cards/> */}
+          {/* </li> */}
+        {/* ))} */}
+      {/* </ul> */} 
+
+      <div className="  grid grid-cols-3 gap-x-3 max-w-5xl mt-[3rem] items-center justify-center mx-auto space-y-7">
+      {products.map((product) => {
+        return (
+          <Cards
+            key={product.id}
+            image={product.image}
+            title={product.name}
+            // rating={product.rating}
+            price={product.price}
+            // about={product.about}
+            // onPurchase={() => handlePurchase(product.id)} // not working for now
+            productId={product.id}
+            handlePurchase = {handlePurchase}
+          />
+        );
+      })}
+      </div>
+
+
     </div>
   );
 };
