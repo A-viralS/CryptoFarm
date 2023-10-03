@@ -14,9 +14,9 @@ const Hero = () => {
         className="text-5xl md:text-6xl xl:text-7xl font-bold
       tracking-tight mb-12"
       >
-        <span>Sow the change, Reap the rewards on</span>
+        <span className="">Sow the change, Reap the rewards on</span>
         <br />
-        <span className="uppercase text-green-600">Crypto Farm.</span>
+        <span className="uppercase text-green-600">crypto farm.</span>
       </h1>
       <div className="flex justify-center items-center space-x-2">
         <button

@@ -2,13 +2,63 @@
   "products": [
     {
       "id": 0,
-      "name": "Product 1",
-      "price": 1
+      "name": "Pesticide",
+      "price": 1,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
     },
     {
       "id": 1,
-      "name": "Product 2",
-      "price": 2
+      "name": "Fertilizer",
+      "price": 2,
+      "image" : "https://m.media-amazon.com/images/I/61esWwU-+DL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Insecticide",
+      "price": 3,
+      "image" : "https://www.shutterstock.com/shutterstock/photos/489639607/display_1500/stock-photo--d-illustration-of-three-different-insecticide-bottles-489639607.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Product 4",
+      "price": 4,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Product 5",
+      "price": 5,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Product 6",
+      "price": 6,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Product 7",
+      "price": 7,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Product 8",
+      "price": 8,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Product 9",
+      "price": 9,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Product 10",
+      "price": 1,
+      "image" : "https://www.aindhinai.com/images/product/1653964595Aindhinai-HERBAL-PEST-CONTROLLER-MUSIRI-TRICHY.jpg"
     }
   ]
 }
