@@ -49,7 +49,13 @@ const isWallectConnected = async () => {
 
 const getEtheriumContract = async () => {
   const connectedAccount = getGlobalState("connectedAccount");
+
   console.log(contractAddress);
+  const contractBalance = await web3.eth.getBalance(contractAddress);
+
+  console.log("Contract Ether balance:", web3.utils.fromWei(contractBalance, "ether"), "ETH");
+  // console.log(connectedAccount);
+
   if (connectedAccount) {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
@@ -72,14 +78,16 @@ const buyProduct = async (productId) => {
     console.log("after getethecontract");
     const tx = await // Assuming productId is 0 and productPrice is 1 ether
 
-    await contract.buyProduct(0, web3.utils.toWei("1", "ether"), {
+    await contract.buyProduct(0,1, {              //now farmer is paying 1 ether to the contract for each productId
       from: buyerAddress,
+      // to: contractAddress,
       value: web3.utils.toWei("1", "ether"),
     });
 
     console.log("after conract.buyproduct");
 
     await tx.wait();
+    // console.log(contract);
   } catch (error) {
     reportError(error);
   }

@@ -25,7 +25,7 @@ const Project = () => {
       <UpdateProject project={project} />0
 
       <DeleteProject project={project} />
-      <BackProject project={project} />ng your wallet and using the thirdweb dashboard, you agre
+      <BackProject project={project} />
       <ProjectBackers backers={backers} />
     </>
   ) : null;
