@@ -7,6 +7,7 @@ import ProjectDetails from "../components/ProjectDetails";
 import UpdateProject from "../components/UpdateProject";
 import { getBackers, loadProject } from "../services/blockchain";
 import { useGlobalState } from "../store";
+import PerformRefundButton from "../components/PerformRefundButton";
 
 const Project = () => {
   const { id } = useParams();
@@ -22,9 +23,10 @@ const Project = () => {
   return loaded ? (
     <>
       <ProjectDetails project={project} />
-      <UpdateProject project={project} />0
+      <UpdateProject project={project} />
 
       <DeleteProject project={project} />
+      <PerformRefundButton project={project} />
       <BackProject project={project} />
       <ProjectBackers backers={backers} />
     </>

@@ -73,12 +73,13 @@ contract Genesis {
     constructor(uint _projectTax) {
         owner = msg.sender;
         projectTax = _projectTax;
-      products.push(productStruct(0, "Product 1", 1 ether));
-products.push(productStruct(1, "Product 2", 1 ether));
-products.push(productStruct(2, "Product 3", 1 ether ));
+        products.push(productStruct(0, "Product 1", 1 ether));
+        products.push(productStruct(1, "Product 2", 1 ether));
+        products.push(productStruct(2, "Product 3", 1 ether ));
 
     }
-  modifier projectOwner(uint id) {
+
+    modifier projectOwner(uint id) {
         require(msg.sender == projects[id].owner, "Only the project owner can perform this action");
         _;
     }
@@ -94,21 +95,22 @@ products.push(productStruct(2, "Product 3", 1 ether ));
         productStruct memory product = products[id];
         return (product.name, product.price);
     }
-function buyProduct(uint productId, uint productPrice) public payable productExists(productId) {
     
-    require(msg.value >= productPrice, "Insufficient funds to buy the product!!!");
+    function buyProduct(uint productId, uint productPrice) public payable productExists(productId) {
+        
+        require(msg.value >= productPrice, "Insufficient funds to buy the product!!!");
 
-    // Transfer the product price to the project owner (contract owner)
-    payable(owner).transfer(productPrice);
+        // Transfer the product price to the project owner (contract owner)
+        payable(owner).transfer(productPrice);
 
-    // Emit an event to track the purchase
-    emit Action (
-        productId,
-        "PRODUCT PURCHASED",
-        msg.sender,
-        block.timestamp
-    );
-}
+        // Emit an event to track the purchase
+        emit Action (
+            productId,
+            "PRODUCT PURCHASED",
+            msg.sender,
+            block.timestamp
+        );
+    }
 
 
 

@@ -61,7 +61,7 @@ const Cards = ({ image, title , price , handlePurchase , productId}) => {
             >
               Buy
             </button>
-            </div>
+          </div>
           
         
       {/* </section> */}

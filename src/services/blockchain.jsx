@@ -66,6 +66,8 @@ const getEtheriumContract = async () => {
     return getGlobalState("contract");
   }
 };
+
+
 const buyProduct = async (productId) => {
   console.log("Entering the buyProduct in blockchain service");
   console.log(productId);
@@ -153,6 +155,16 @@ const deleteProject = async (id) => {
     reportError(error);
   }
 };
+
+const performRefund = async (id) => {
+  try {
+    if (!ethereum) return alert("Please install Metamask");
+    const contract = await getEtheriumContract();
+    await contract.requestRefund(id);
+  } catch (error) {
+    reportError(error);
+  }
+}
 
 const loadProjects = async () => {
   try {
@@ -284,6 +296,7 @@ export {
   createProject,
   updateProject,
   deleteProject,
+  performRefund,
   loadProjects,
   loadProject,
   backProject,
