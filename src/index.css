@@ -18,3 +18,13 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url("./images//Gilroy-Medium.ttf");
+}
+
+@font-face {
+  font-family: 'Hanson';
+  src: url("./images/Hanson-Bold.otf");
+}

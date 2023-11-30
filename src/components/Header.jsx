@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header
       className="flex justify-between items-center
-        p-5 bg-white shadow-lg fixed top-0 left-0 right-0 z-[100]"
+        p-5 bg-white shadow-lg fixed top-0 left-0 right-0 z-[100] font-hanson"
     >
       <Link
         to="/"

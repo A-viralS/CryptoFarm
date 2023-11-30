@@ -6,6 +6,8 @@ module.exports = {
     fontFamily: {
       display: ['Open Sans', 'sans-serif'],
       body: ['Open Sans', 'sans-serif'],
+      gilroy: ['Gilroy', 'sans-serif'],
+      hanson: ['Hanson', 'sans-serif'],
     },
     extend: {
       screens: {
